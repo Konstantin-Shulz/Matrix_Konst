@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         //хочу чтобы пользователь задал размеры матрицы
         int[][] matr = createMatrixOfZeroes();
-        //int column = 0;
+        int column = 0;
         //printMatr(matr);
         randomize(matr);
         printMatr(matr);
@@ -14,8 +14,8 @@ public class Main {
         printMaxElemMatrix(matr);
         //вывести столбец, содержащий максимальный элемент матрицы
         printСolumnMax(matr);
-
-
+        //вывеcти строки без максимума и минимума
+        printMatrixRowsNoMinMax(matr);
 
     }
 
@@ -28,8 +28,7 @@ public class Main {
         return matr;
     }
 
-    public static void printMatr(int[][] matr)
-    {
+    public static void printMatr(int[][] matr) {
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
                 System.out.printf(" %3d", matr[i][j]);
@@ -38,64 +37,92 @@ public class Main {
         }
     }
 
-    public static void randomize(int[][] matr)
-    {
+    public static void randomize(int[][] matr) {
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
                 Random rn = new Random();
-                int randomNum = rn.nextInt(1000) ;
+                int randomNum = rn.nextInt(1000);
                 matr[i][j] = randomNum;
             }
         }
     }
 
     //подсчитать и вывести сумму элементов в каждой строке матрицы
-    public static void printLineSums(int[][] matr)
-    {
+    public static void printLineSums(int[][] matr) {
         for (int i = 0; i < matr.length; i++) {
             int s = 0;
             for (int j = 0; j < matr[i].length; j++) {
                 s += matr[i][j];
             }
-            System.out.println("сумма элементов строки "+i+" равна "+s);
+            System.out.println("сумма элементов строки " + i + " равна " + s);
         }
     }
 
     public static void printMaxElemMatrix(int[][] matr) {
-    int max = 0;
-    for (int i = 0; i < matr.length; i++) {
-        for (int j = 0; j < matr[i].length; j++) {
-            if (matr[i][j] > max) {
-                max = matr[i][j];
+        int max = 0;
+        for (int i = 0; i < matr.length; i++) {
+            for (int j = 0; j < matr[i].length; j++) {
+                if (matr[i][j] > max) {
+                    max = matr[i][j];
+                }
             }
         }
+        System.out.printf("Максимум = " + max + ". ");
     }
-    System.out.printf("Максимум = "+max+". ");
-    }
+
     public static int printСolumnMax(int[][] matr) {
         int max = 0;
         int column = 0;
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
                 if (matr[i][j] > max) {
-                   max = matr[i][j]; column =j+1;
+                    max = matr[i][j];
+                    column = j + 1;
                 }
             }
         }
-        System.out.println("Столбец c максимумом №" +column+", сам столбец ниже:");
-            for (int i = 0; i < (matr.length); i++) {
-                int j = column;
-                System.out.printf(" %3d", matr[i][j-1]);
-                System.out.println();
-            }
+        System.out.println("Столбец c максимумом №" + column + ", сам столбец ниже:");
+        for (int i = 0; i < (matr.length); i++) {
+            int j = column;
+            System.out.printf(" %3d", matr[i][j - 1]);
+            System.out.println();
+        }
         return column;
-
-
     }
 
+    public static int printMatrixRowsNoMinMax(int[][] matr) {
+        int max = 0;
+        int min = 999;
+        int rowmax = 0;
+        int rowmin = 0;
+        //поиск строки максимума
+        for (int i = 0; i < matr.length; i++) {
+            for (int j = 0; j < matr[i].length; j++) {
+                if (matr[i][j] > max) {
+                    max = matr[i][j];
+                    rowmax = i + 1;
+                }
+            }
+        }
+        //поиск строки минимума
+        for (int i = 0; i < matr.length; i++) {
+            for (int j = 0; j < matr[i].length; j++) {
+                if (matr[i][j] < min) {
+                    min = matr[i][j];
+                    rowmin = i+1;
+                }
+            }
+        }
+        System.out.println("Строка c максимумом №" + rowmax + " = " +max+", её не выводим");
+        System.out.println("Строка c минимумом №" + rowmin + " = " +min+", её не выводим");
 
+        for (int i = 0; i < (matr.length); i++) {
+            for (int j = 0; j < matr[i].length; j++) {
+                if ((i == rowmax) || (i == rowmin)) continue;
+                System.out.printf(" %3d", matr[i][j]);
+            }System.out.println();
+        }
+        return rowmax;
 
-
-
-
+    }
 }
