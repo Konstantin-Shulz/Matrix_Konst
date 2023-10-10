@@ -6,11 +6,14 @@ public class Main {
     public static void main(String[] args) {
         //хочу чтобы пользователь задал размеры матрицы
         int[][] matr = createMatrixOfZeroes();
+
         //printMatr(matr);
         randomize(matr);
         printMatr(matr);
         //printLineSums(matr);
         printMaxElemMatrix(matr);
+        printRowMax(matr);
+
     }
 
     private static int[][] createMatrixOfZeroes() {
@@ -55,22 +58,29 @@ public class Main {
         }
     }
 
-public static void printMaxElemMatrix(int[][] matr)
-{
+    public static void printMaxElemMatrix(int[][] matr) {
     int max = 0;
     for (int i = 0; i < matr.length; i++) {
-
         for (int j = 0; j < matr[i].length; j++) {
-
             if (matr[i][j] > max) {
                 max = matr[i][j];
-
             }
         }
     }
-
     System.out.println("Максимум равен "+max);
+    }
+    public static void printRowMax(int[][] matr) {
+        int max = 0;
+        int row = 0;
 
-}
+        for (int i = 0; i < matr.length; i++) {
+            for (int j = 0; j < matr[i].length; j++) {
+                if (matr[i][j] > max) {
+                    max = matr[i][j];
 
+                }row = j; System.out.println("столбец = " +row);
+            }
+        }
+
+    }
 }
