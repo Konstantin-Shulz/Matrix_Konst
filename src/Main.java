@@ -9,6 +9,7 @@ public class Main {
         printMatr(matr);
         randomize(matr);
         printMatr(matr);
+        printLineSums(matr);
     }
 
     private static int[][] createMatrixOfZeroes() {
@@ -38,6 +39,18 @@ public class Main {
                 int randomNum = rn.nextInt(100) ;
                 matr[i][j] = randomNum;
             }
+        }
+    }
+
+    //подсчитать и вывести сумму элементов в каждой строке матрицы
+    public static void printLineSums(int[][] matr)
+    {
+        for (int i = 0; i < matr.length; i++) {
+            int s = 0;
+            for (int j = 0; j < matr[i].length; j++) {
+                s += matr[i][j];
+            }
+            System.out.println("сумма элементов строки "+i+" равна "+s);
         }
     }
 }
