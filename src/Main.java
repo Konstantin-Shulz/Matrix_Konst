@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -8,6 +9,14 @@ public class Main {
         int n = scan.nextInt();
         int m = scan.nextInt();
         int[][] matr = new int[n][m];
+        printMatr(matr);
+    }
 
+    public static void printMatr(int[][] matr)
+    {
+        //todo: сделать красивый форматированный вывод
+        for (int i = 0; i < matr.length; i++) {
+            System.out.println(Arrays.toString(matr[i]));
+        }
     }
 }
