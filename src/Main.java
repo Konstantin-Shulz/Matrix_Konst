@@ -6,13 +6,16 @@ public class Main {
     public static void main(String[] args) {
         //хочу чтобы пользователь задал размеры матрицы
         int[][] matr = createMatrixOfZeroes();
-
+        //int column = 0;
         //printMatr(matr);
         randomize(matr);
         printMatr(matr);
         //printLineSums(matr);
         printMaxElemMatrix(matr);
-        printRowMax(matr);
+        //вывести столбец, содержащий максимальный элемент матрицы
+        printСolumnMax(matr);
+
+
 
     }
 
@@ -67,20 +70,32 @@ public class Main {
             }
         }
     }
-    System.out.println("Максимум равен "+max);
+    System.out.printf("Максимум = "+max+". ");
     }
-    public static void printRowMax(int[][] matr) {
+    public static int printСolumnMax(int[][] matr) {
         int max = 0;
-        int row = 0;
-
+        int column = 0;
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
                 if (matr[i][j] > max) {
-                    max = matr[i][j];
-
-                }row = j; System.out.println("столбец = " +row);
+                   max = matr[i][j]; column =j+1;
+                }
             }
         }
+        System.out.println("Столбец c максимумом №" +column+", сам столбец ниже:");
+            for (int i = 0; i < (matr.length); i++) {
+                int j = column;
+                System.out.printf(" %3d", matr[i][j-1]);
+                System.out.println();
+            }
+        return column;
+
 
     }
+
+
+
+
+
+
 }
