@@ -17,9 +17,11 @@ public class Main {
 
     public static void printMatr(int[][] matr)
     {
-        //todo: сделать красивый форматированный вывод
         for (int i = 0; i < matr.length; i++) {
-            System.out.println(Arrays.toString(matr[i]));
+            for (int j = 0; j < matr[i].length; j++) {
+                System.out.printf(" %3d", matr[i][j]);
+            }
+            System.out.println();
         }
     }
 
