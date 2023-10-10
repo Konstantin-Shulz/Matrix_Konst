@@ -26,7 +26,7 @@ public class Main {
     {
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
-                matr[i][j] = 19;
+
             }
         }
     }
