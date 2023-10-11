@@ -31,7 +31,7 @@ public class Main {
     public static void printMatr(int[][] matr) {
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
-                System.out.printf(" %3d", matr[i][j]);
+                System.out.printf(" %4d", matr[i][j]);
             }
             System.out.println();
         }
@@ -118,7 +118,7 @@ public class Main {
             for (int j = 0; j < matr[i].length; j++) {
                 if (matr[i][j] > max) {
                     max = matr[i][j];
-                    rowmax = i + 1;
+                    rowmax = i ;
                 }
             }
         }
@@ -127,7 +127,7 @@ public class Main {
             for (int j = 0; j < matr[i].length; j++) {
                 if (matr[i][j] < min) {
                     min = matr[i][j];
-                    rowmin = i+1;
+                    rowmin = i;
                 }
             }
         }
@@ -136,8 +136,8 @@ public class Main {
 
         for (int i = 0; i < (matr.length); i++) {
             for (int j = 0; j < matr[i].length; j++) {
-                if ((i == rowmax) || (i == rowmin)) continue;
-                System.out.printf(" %3d", matr[i][j]);
+                if (!((i == rowmax) || (i == rowmin)))
+                    System.out.printf(" %3d", matr[i][j]);
             }System.out.println();
         }
         return rowmax;
