@@ -59,6 +59,12 @@ public class Main {
     }
 
     public static void printMaxElemMatrix(int[][] matr) {
+        int max = findMaxElem(matr);
+        System.out.printf("Максимум = " + max + ". ");
+    }
+
+    public static int findMaxElem(int[][] matr)
+    {
         int max = 0;
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
@@ -67,7 +73,7 @@ public class Main {
                 }
             }
         }
-        System.out.printf("Максимум = " + max + ". ");
+        return max;
     }
 
     public static int printСolumnMax(int[][] matr) {
