@@ -41,7 +41,7 @@ public class Main {
         for (int i = 0; i < matr.length; i++) {
             for (int j = 0; j < matr[i].length; j++) {
                 Random rn = new Random();
-                int randomNum = rn.nextInt(1000);
+                int randomNum = rn.nextInt(100);
                 matr[i][j] = randomNum;
             }
         }
@@ -88,10 +88,22 @@ public class Main {
             }
         }
         System.out.println("Столбец c максимумом №" + column + ", сам столбец ниже:");
-        for (int i = 0; i < (matr.length); i++) {
+
+        /*for (int i = 0; i < (matr.length); i++) {
             int j = column;
             System.out.printf(" %3d", matr[i][j - 1]);
             System.out.println();
+        }*/
+        int[][] m = sliceColumnFromMatrix(matr,column-1);
+        printMatr(m);
+        return column;
+    }
+
+    public static int[][] sliceColumnFromMatrix(int[][] matr, int col)
+    {
+        int[][] column =new int[matr.length][1];
+        for (int i = 0; i < matr.length; i++) {
+            column[i][0] = matr[i][col];
         }
         return column;
     }
